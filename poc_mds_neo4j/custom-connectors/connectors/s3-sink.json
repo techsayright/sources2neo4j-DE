@@ -1,0 +1,17 @@
+{
+  "name": "sink-neo4j-orders-00",
+  "config": {
+    "topics": "demo.mydb.courses",
+    "connector.class": "streams.kafka.connect.sink.Neo4jSinkConnector",
+    "errors.retry.timeout": "-1",
+    "errors.retry.delay.max.ms": "1000",
+    "errors.tolerance": "all",
+    "errors.log.enable": true,
+    "errors.log.include.messages": true,
+    "neo4j.server.uri": "bolt://neo4j:7687",
+    "neo4j.authentication.basic.username": "neo4j",
+    "neo4j.authentication.basic.password": "connect",
+    "neo4j.encryption.enabled": false,
+    "neo4j.topic.cypher.demo.mydb.courses": "MERGE (a:course {id:event._id,name:event.course_name})"
+  }
+}
